@@ -1288,7 +1288,21 @@ public:
       }
    }
 
-private:
+   inline bool operator==(const bitmap_image &rhs) const
+   {
+      return width_ == rhs.width_ &&
+             height_ == rhs.height_ &&
+             row_increment_ == rhs.row_increment_ &&
+             bytes_per_pixel_ == rhs.bytes_per_pixel_ &&
+             channel_mode_ == rhs.channel_mode_ &&
+             data_ == rhs.data_;
+   }
+   inline bool operator!=(const bitmap_image &rhs) const
+   {
+      return !(rhs == *this);
+   }
+
+   private:
 
    inline const unsigned char* end() const
    {
